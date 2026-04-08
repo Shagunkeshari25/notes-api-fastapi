@@ -17,7 +17,7 @@ def login(request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(
             detail="Invalid credentials"
         )
     
-    # ✅ FIXED: correct order (hashed_password, plain_password)
+    # FIXED: correct order (hashed_password, plain_password)
     if not Hash.verify(user.password, request.password):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
